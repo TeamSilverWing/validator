@@ -1,0 +1,15 @@
+complexParams:
+  id:
+    required: true
+    type: integer
+    moreThan: 0
+
+  title:
+    optional: true
+    type: string
+    lengthBetween: [4, 8]
+
+  digit:
+    optional: true
+    type: digit
+    between: [0, 50]

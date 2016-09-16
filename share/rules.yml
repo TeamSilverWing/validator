@@ -1,0 +1,10 @@
+rules:
+  between: \Form\Validator\Integer\Between
+  lessThan: \Form\Validator\Integer\LessThan
+  moreThan: \Form\Validator\Integer\MoreThan
+  lengthBetween: \Form\Validator\String\Length\Between
+  lengthLessThan: \Form\Validator\String\Length\LessThan
+  lengthMoreThan: \Form\Validator\String\Length\MoreThan
+  isArray: \Form\Validator\IsArray
+  isScalar: \Form\Validator\IsScalar
+  type: \Form\Validator\IsType

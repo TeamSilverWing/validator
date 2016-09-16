@@ -1,0 +1,59 @@
+item:
+  # item: id
+  id:
+    required: true
+    type: integer
+    filter: [integer]
+    moreThan: 0
+
+  # item: title
+  title:
+    required: true
+    type: string
+    lengthBetween: [4, 128]
+    stripTags: '<b></b>'
+    allowDigits: 4
+
+  user_id:
+    required: true
+    type: integer
+    userExists: true
+    moreThan: 0
+
+  category_id:
+    required: true
+    type: integer
+    moreThan: 0
+
+  # item: phone
+  phone:
+    required: true
+    type: string
+    filter: [string, phone]
+
+  # item: description
+  description:
+    optional: true
+    type: string
+
+  params:
+    notEmpty: true
+    type: array
+    categoryParams: true
+
+  images:
+    allowEmpty: true
+    type: array
+    allOf:
+      type: integer
+      moreThan: 0
+
+  complex:
+    optional: true
+    itemComplex: true
+
+  complexParams:
+    allowEmpty: true
+    type: array
+    allOf:
+      complexParams: true

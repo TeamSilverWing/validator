@@ -1,0 +1,19 @@
+price:
+  type:
+    required: true
+    type: integer
+    in: [1, 2, 3, 4, 5]
+
+  title:
+    required: true
+    type: string
+    lengthBetween: [5, 8]
+
+  value:
+    required: true
+    type: integer
+
+  currency:
+    required: true
+    type: integer
+    in: [1, 2, 3]

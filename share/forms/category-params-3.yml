@@ -1,0 +1,16 @@
+categoryParams3:
+  242:
+    required: true
+    type: integer
+    between: [2, 5]
+  234:
+    required: true
+    type: string
+    lengthBetween: [4, 8]
+  988:
+    required: true
+    type: boolean
+  1056:
+    optional: true
+    type: string
+    lengthBetween: [5, 10]

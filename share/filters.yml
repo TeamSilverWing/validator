@@ -1,0 +1,10 @@
+filters:
+  stipTags: \Form\Filter\StripTags
+  integer:
+    class: \Form\Filter\Scalar
+    init:
+      0: \Form\Filter\Scalar::TYPE_INT
+  string:
+    class: \Form\Filter\Scalar
+    init:
+      0: \Form\Filter\Scalar::TYPE_STRING

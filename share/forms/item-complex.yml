@@ -1,0 +1,14 @@
+itemComplex:
+  id:
+    required: true
+    type: integer
+    moreThan: 0
+
+  title:
+    required: true
+    type: string
+    lengthBetween: [5, 12]
+
+  price:
+    required: true
+    price: true
