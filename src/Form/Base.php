@@ -13,18 +13,46 @@ abstract class Base implements IBase
 
     const ERROR_CODE = Errors::ERROR_CODE_FORM;
 
+    /**
+     * Ошибки формы
+     * @var array
+     */
     protected $errors = [];
 
+    /**
+     * Правила валидации
+     * @var array
+     */
     protected $rules = [];
 
+    /**
+     * Тексты ошибок
+     * @var array
+     */
     protected $errorMessages = [];
 
+    /**
+     * Промежуточные, валидируемые данные
+     * @var array
+     */
     protected $validData = [];
 
+    /**
+     * Валидные данные
+     * @var array
+     */
     protected $safeData = [];
 
+    /**
+     * Карта присутствующих/отсутствующих параметров
+     * @var array
+     */
     protected $existsMap = [];
 
+    /**
+     * Required-поля
+     * @var array
+     */
     protected $requiredMap = [];
 
     protected $defaultRequired = true;
