@@ -10,6 +10,7 @@ use \Form\Validator\String\Length\Between as StrBetween;
 use \Form\Filter\StripTags;
 use \Form\Validator\String\AllowedCountDigits;
 use \Form\Validator\String\Length\MoreThan as StrMoreThan;
+use \Form\Filter\PregReplace;
 
 /**
  * @property int $id
@@ -73,7 +74,17 @@ class Item extends Form
         $this->addRules(
             'params',
             [
-                IsType::create('array')
+                IsType::create('array'),
+                CategoryParams3::create()
+            ]
+        );
+
+        $this->addRules(
+            'phone',
+            [
+                FilterScalar::create('string'),
+                IsType::create('string'),
+                PregReplace::create('/\D+/s', '')
             ]
         );
     }

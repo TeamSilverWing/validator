@@ -58,6 +58,9 @@ return [
             'phone' => '79991234567'
         ],
         [
+            'params' => [
+                234 => 'required'
+            ],
             'complexParam' => [
                 3 => 'digit 4'
             ]

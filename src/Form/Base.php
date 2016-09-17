@@ -19,9 +19,20 @@ abstract class Base implements IBase
 
     protected $safeData = [];
 
+    protected $existsMap = [];
+
     protected $requiredMap = [];
 
     protected $defaultRequired = true;
+
+    /**
+     * @return static
+     */
+    public static function create()
+    {
+        $args = func_get_args();
+        return new static(...$args);
+    }
 
     /**
      * Валидация данных
@@ -36,7 +47,7 @@ abstract class Base implements IBase
         $this->validData = $data;
 
         foreach ($this->rules as $param => $ruleSet) {
-            if ($this->validateValue($param)) {
+            if ($this->validateValue($param) && !empty($this->existsMap[$param])) {
                 $this->safeData[$param] = $this->validData[$param];
             }
         }
@@ -57,8 +68,19 @@ abstract class Base implements IBase
             return $isValidRule;
         }
 
+        $isRequired = $this->isRequired($param);
+        $isExists = array_key_exists($param, $this->validData);
+        $this->existsMap[$param] = $isExists;
+
+        if ($isRequired && !$isExists) {
+            $this->setError($param, 0, [Errors::FIELD_IS_REQUIRED]);
+            return false;
+        } elseif (!$isRequired && !$isExists) {
+            return true;
+        }
+
         foreach ($this->rules[$param] as $ruleNum => $rule) {
-            $isValid = $this->validateRuleValue($ruleNum, $param);
+            $isValid = $this->execOne($ruleNum, $param);
 
             if (!$isValid) {
                 $isValidRule = false;
@@ -73,12 +95,25 @@ abstract class Base implements IBase
     }
 
     /**
+     * @param string|int $param
+     * @return bool
+     */
+    protected function isRequired($param)
+    {
+        if (!isset($this->requiredMap[$param])) {
+            $this->requiredMap[$param] = $this->defaultRequired;
+        }
+
+        return $this->requiredMap[$param];
+    }
+
+    /**
      * Валидация значения по правилу
      * @param int $ruleNum
      * @param int|string $param
      * @return bool
      */
-    protected function validateRuleValue(int $ruleNum, $param): bool
+    protected function execOne(int $ruleNum, $param): bool
     {
         $isValidRule = true;
         $rule = $this->getRule($param, $ruleNum);

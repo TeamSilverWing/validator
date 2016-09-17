@@ -2,7 +2,7 @@
 
 namespace Tests\Form;
 
-use Tests\Form\Data\Base;
+use \Tests\Form\Data\Base;
 use \Form\Form as Form;
 
 class FormTest extends Base
