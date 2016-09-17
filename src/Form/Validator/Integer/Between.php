@@ -3,12 +3,15 @@
 namespace Form\Validator\Integer;
 
 use \Form\Validator;
+use \Form\Errors;
 
 /**
  * @validator: between
  */
 class Between extends Validator
 {
+    const ERROR_CODE = Errors::ERROR_CODE_VALIDATOR_INT_BETWEEN;
+
     /**
      * @var int
      */

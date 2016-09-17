@@ -4,12 +4,15 @@ namespace Form\Validator;
 
 use \Form\Validator;
 use \Form\Exception\InvalidArgumentException;
+use Form\Errors;
 
 /**
  * @validator: type
  */
 class IsType extends Validator
 {
+    const ERROR_CODE = Errors::ERROR_CODE_VALIDATOR_IS_TYPE;
+
     const TYPE_INTEGER = 0;
     const TYPE_STRING = 1;
     const TYPE_BOOLEAN = 2;

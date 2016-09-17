@@ -3,9 +3,12 @@
 namespace Form\Validator\String;
 
 use \Form\Validator;
+use Form\Errors;
 
 class AllowedCountDigits extends Validator
 {
+    const ERROR_CODE = Errors::ERROR_CODE_VALIDATOR_STR_ALLOWED_DIGITS;
+
     const TYPE_LESS = -1;
     const TYPE_EQUAL = 0;
     const TYPE_MORE = 1;

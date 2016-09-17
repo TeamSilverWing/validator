@@ -9,6 +9,8 @@ use Form\Validator\String\Length\Between as StrBetween;
 
 class CategoryParams3 extends \Form\Form
 {
+    const ERROR_CODE = 'category.params.3';
+
     public function __construct()
     {
         $this->setDefaultRequired();

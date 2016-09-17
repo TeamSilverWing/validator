@@ -2,11 +2,15 @@
 
 namespace Form\Validator\String\Length;
 
+use Form\Errors;
+
 /**
  * @validator: lengthMoreThan
  */
 class MoreThan extends Base
 {
+    const ERROR_CODE = Errors::ERROR_CODE_VALIDATOR_STR_MORE;
+
     /**
      * {@inheritdoc}
      */

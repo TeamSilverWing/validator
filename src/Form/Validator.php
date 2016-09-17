@@ -7,6 +7,7 @@ use Form\Interfaces\IValidator;
 abstract class Validator implements IValidator
 {
     const DEFAULT_ERROR = 0;
+    const ERROR_CODE = Errors::ERROR_CODE_VALIDATOR;
 
     protected $errors = [];
 
@@ -21,6 +22,14 @@ abstract class Validator implements IValidator
     {
         $args = func_get_args();
         return new static(...$args);
+    }
+
+    /**
+     * @return int|string
+     */
+    public function getId()
+    {
+        return static::ERROR_CODE;
     }
 
     /**

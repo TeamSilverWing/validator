@@ -5,6 +5,12 @@ namespace Form\Interfaces;
 interface IValidate
 {
     /**
+     * Возвращает id валидатора
+     * @return int|string
+     */
+    public function getId();
+
+    /**
      * Валидация
      * @param mixed $value
      * @return bool

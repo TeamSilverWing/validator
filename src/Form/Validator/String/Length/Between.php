@@ -3,12 +3,15 @@
 namespace Form\Validator\String\Length;
 
 use Form\Validator;
+use Form\Errors;
 
 /**
  * @validator: lengthBetween
  */
 class Between extends Validator\Integer\Between
 {
+    const ERROR_CODE = Errors::ERROR_CODE_VALIDATOR_STR_BETWEEN;
+
     /**
      * @var string
      */

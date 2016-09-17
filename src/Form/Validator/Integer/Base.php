@@ -4,7 +4,7 @@ namespace Form\Validator\Integer;
 
 use Form\Validator;
 
-class Base extends Validator
+abstract class Base extends Validator
 {
     /**
      * @var int

@@ -9,6 +9,10 @@ use Form\Interfaces\IValidator;
 
 abstract class Base implements IBase
 {
+    const REQUIRED_RULE_NUM = -1;
+
+    const ERROR_CODE = Errors::ERROR_CODE_FORM;
+
     protected $errors = [];
 
     protected $rules = [];
@@ -32,6 +36,14 @@ abstract class Base implements IBase
     {
         $args = func_get_args();
         return new static(...$args);
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return static::ERROR_CODE;
     }
 
     /**
@@ -73,7 +85,7 @@ abstract class Base implements IBase
         $this->existsMap[$param] = $isExists;
 
         if ($isRequired && !$isExists) {
-            $this->setError($param, 0, [Errors::FIELD_IS_REQUIRED]);
+            $this->setError($param, self::REQUIRED_RULE_NUM, [Errors::FIELD_IS_REQUIRED]);
             return false;
         } elseif (!$isRequired && !$isExists) {
             return true;
@@ -125,16 +137,16 @@ abstract class Base implements IBase
             );
         } elseif (is_callable($rule) && ($code = $rule($this->getValidData($param)))) {
             $isValidRule = false;
-            $this->setError($param, $ruleNum, [$code]);
+            $this->setError($param, 'callback' . $ruleNum, [$code]);
         } elseif ($rule instanceof IForm) {
             if ($isValidRule = $rule->validate($this->getValidData($param))) {
                 $this->setValidData($param, $rule->getSafeData());
             } else {
-                $this->setError($param, $ruleNum, $rule->getErrors());
+                $this->setError($param, $rule->getId(), $rule->getErrors());
             }
         } elseif ($rule instanceof IValidator) {
             if (!($isValidRule = $rule->validate($this->getValidData($param)))) {
-                $this->setError($param, $ruleNum, $rule->getErrors());
+                $this->setError($param, $rule->getId(), $rule->getErrors());
             }
         }
 
@@ -153,10 +165,10 @@ abstract class Base implements IBase
     /**
      * Установка ошибки
      * @param string $param
-     * @param int $ruleNum
+     * @param int|string $ruleNum
      * @param array $errors
      */
-    protected function setError($param, int $ruleNum, array $errors)
+    protected function setError($param, $ruleNum, array $errors)
     {
         if (empty($this->errorMessages[$param][$ruleNum])) {
             $this->errors[$param][$ruleNum] = $errors;

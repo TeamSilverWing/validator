@@ -33,5 +33,9 @@ class FormTest extends Base
                 $this->assertEquals($expectedValue, $form->{$param});
             }
         }
+
+        if (!empty($form->getErrors())) {
+            var_dump($form->getErrors());
+        }
     }
 }
