@@ -18,7 +18,7 @@ return [
                 988 => false
             ],
             'phone' => '+7 (999) 123 - 45-67',
-            'images' => [1232, 4342, 3534, 4234],
+            'images' => [1232, 4342, 3534, 4234, '123a', 'bad'],
             'complex' => [
                 'id' => 9,
                 'title' => 'complex object',
@@ -57,7 +57,11 @@ return [
             'id' => 1,
             'title' => 'Item <b>black</b> title',
             'description' => 'Item for <b>black</b> sale & white',
-            'phone' => '79991234567'
+            'user_id' => 2,
+            'category_id' => 3,
+            'phone' => '79991234567',
+            'params' => null,
+            'images' => [1232, 4342, 3534, 4234, 123, 0],
         ],
         [
             'params' => [

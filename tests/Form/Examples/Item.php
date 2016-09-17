@@ -3,6 +3,7 @@
 namespace Tests\Form\Examples;
 
 use \Form\Form;
+use Form\Validator\IsArray;
 use \Form\Validator\IsType;
 use \Form\Validator\Integer\MoreThan as IntMoreThan;
 use \Form\Filter\Scalar as FilterScalar;
@@ -11,11 +12,16 @@ use \Form\Filter\StripTags;
 use \Form\Validator\String\AllowedCountDigits;
 use \Form\Validator\String\Length\MoreThan as StrMoreThan;
 use \Form\Filter\PregReplace;
+use \Form\Filter\Arrays\Base as FilterArrayBase;
 
 /**
  * @property int $id
  * @property string $title
  * @property string $description
+ * @property int $user_id
+ * @property int $category_id
+ * @property string $phone
+ * @property array $images
  */
 class Item extends Form
 {
@@ -85,6 +91,15 @@ class Item extends Form
                 FilterScalar::create('string'),
                 IsType::create('string'),
                 PregReplace::create('/\D+/s', '')
+            ]
+        );
+
+        // @todo: доработать валидаторы списков
+        $this->addRules(
+            'images',
+            [
+                IsArray::create(),
+                FilterArrayBase::create(FilterScalar::create('int'))
             ]
         );
     }
