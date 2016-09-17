@@ -15,7 +15,7 @@ abstract class Form extends Base implements IForm
      */
     public function validate($data): bool
     {
-        return parent::validate(array_merge($this->data, $data));
+        return parent::validate($this->data + $data);
     }
 
     /**

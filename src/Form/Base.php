@@ -137,7 +137,7 @@ abstract class Base implements IBase
             );
         } elseif (is_callable($rule) && ($code = $rule($this->getValidData($param)))) {
             $isValidRule = false;
-            $this->setError($param, 'callback' . $ruleNum, [$code]);
+            $this->setError($param, 'callback_' . $ruleNum, $code);
         } elseif ($rule instanceof IForm) {
             if ($isValidRule = $rule->validate($this->getValidData($param))) {
                 $this->setValidData($param, $rule->getSafeData());
@@ -145,7 +145,7 @@ abstract class Base implements IBase
                 $this->setError($param, $rule->getId(), $rule->getErrors());
             }
         } elseif ($rule instanceof IValidator) {
-            if (!($isValidRule = $rule->validate($this->getValidData($param)))) {
+            if (!($isValidRule = $rule->execValidate($this->getValidData($param)))) {
                 $this->setError($param, $rule->getId(), $rule->getErrors());
             }
         }
@@ -166,12 +166,12 @@ abstract class Base implements IBase
      * Установка ошибки
      * @param string $param
      * @param int|string $ruleNum
-     * @param array $errors
+     * @param mixed $errorCode
      */
-    protected function setError($param, $ruleNum, array $errors)
+    protected function setError($param, $ruleNum, $errorCode)
     {
         if (empty($this->errorMessages[$param][$ruleNum])) {
-            $this->errors[$param][$ruleNum] = $errors;
+            $this->errors[$param][$ruleNum] = $errorCode;
         } else {
             $this->errors[$param][$ruleNum] = $this->errorMessages[$param][$ruleNum];
         }

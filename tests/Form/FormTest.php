@@ -34,8 +34,8 @@ class FormTest extends Base
             }
         }
 
-        if (!empty($form->getErrors())) {
-            var_dump($form->getErrors());
+        if (!empty($form->getErrors()) && !empty($errorCodes)) {
+            $this->assertEquals($errorCodes, $form->getErrors());
         }
     }
 }

@@ -80,4 +80,27 @@ abstract class Validator implements IValidator
     {
         return $this->errors;
     }
+
+    /**
+     * @param int|string $errorCode
+     */
+    public function setError($errorCode = self::DEFAULT_ERROR)
+    {
+        $this->errors[$errorCode] = empty($this->errorMessages[$errorCode]) ?: $this->errorMessages[$errorCode];
+    }
+
+    /**
+     * @param mixed $value
+     * @return bool
+     */
+    public function execValidate($value)
+    {
+        $isValid = $this->validate($value);
+
+        if (!$isValid) {
+            $this->setError(static::DEFAULT_ERROR);
+        }
+
+        return $isValid;
+    }
 }

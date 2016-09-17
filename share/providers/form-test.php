@@ -1,5 +1,7 @@
 <?php
 
+use Form\Errors;
+
 return [
     // set #0
     [
@@ -59,7 +61,13 @@ return [
         ],
         [
             'params' => [
-                234 => 'required'
+                'category.params.3' => [
+                    234 => [
+                        Errors::ERROR_CODE_VALIDATOR_STR_BETWEEN => [
+                            1 => true
+                        ]
+                    ]
+                ]
             ],
             'complexParam' => [
                 3 => 'digit 4'

@@ -11,6 +11,7 @@ use Form\Errors;
 class Between extends Validator\Integer\Between
 {
     const ERROR_CODE = Errors::ERROR_CODE_VALIDATOR_STR_BETWEEN;
+    const DEFAULT_ERROR = 1;
 
     /**
      * @var string
