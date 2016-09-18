@@ -16,6 +16,8 @@ use \Form\Validator\String\Length\Between as StrBetween;
  */
 class ComplexPrice extends Form
 {
+    const ERROR_CODE = 'complex.price';
+
     public function __construct()
     {
         $this->addRules(

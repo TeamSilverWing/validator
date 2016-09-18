@@ -62,6 +62,7 @@ return [
             'phone' => '79991234567',
             'params' => null,
             'images' => null,
+            'complex' => null,
         ],
         [
             'params' => [
@@ -83,7 +84,22 @@ return [
                 ]
             ],
             'complex' => [
-                'complex.type' => []
+                'complex.type' => [
+                    'title' => [
+                        Errors::ERROR_CODE_VALIDATOR_STR_BETWEEN => [
+                            1 => true
+                        ]
+                    ],
+                    'price' => [
+                        'complex.price' => [
+                            'title' => [
+                                Errors::ERROR_CODE_VALIDATOR_STR_BETWEEN => [
+                                    1 => true
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
             ],
             'complexParam' => [
                 3 => 'digit 4'
