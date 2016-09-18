@@ -94,12 +94,11 @@ class Item extends Form
             ]
         );
 
-        // @todo: доработать валидаторы списков
         $this->addRules(
             'images',
             [
                 IsArray::create(),
-                FilterArrayBase::create(FilterScalar::create('int'))
+                ImagesArray::create()
             ]
         );
     }

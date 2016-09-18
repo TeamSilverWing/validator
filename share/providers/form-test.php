@@ -61,13 +61,22 @@ return [
             'category_id' => 3,
             'phone' => '79991234567',
             'params' => null,
-            'images' => [1232, 4342, 3534, 4234, 123, 0],
+            'images' => null,
         ],
         [
             'params' => [
                 'category.params.3' => [
                     234 => [
                         Errors::ERROR_CODE_VALIDATOR_STR_BETWEEN => [
+                            1 => true
+                        ]
+                    ]
+                ]
+            ],
+            'images' => [
+                'images.array' => [
+                    5 => [
+                        Errors::ERROR_CODE_VALIDATOR_INT_MORE => [
                             1 => true
                         ]
                     ]

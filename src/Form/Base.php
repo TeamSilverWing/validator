@@ -5,6 +5,7 @@ namespace Form;
 use Form\Interfaces\IBase;
 use Form\Interfaces\IForm;
 use Form\Interfaces\IFilter;
+use Form\Interfaces\IList;
 use Form\Interfaces\IValidator;
 
 abstract class Base implements IBase
@@ -167,6 +168,12 @@ abstract class Base implements IBase
             $isValidRule = false;
             $this->setError($param, 'callback_' . $ruleNum, $code);
         } elseif ($rule instanceof IForm) {
+            if ($isValidRule = $rule->validate($this->getValidData($param))) {
+                $this->setValidData($param, $rule->getSafeData());
+            } else {
+                $this->setError($param, $rule->getId(), $rule->getErrors());
+            }
+        } elseif ($rule instanceof IList) {
             if ($isValidRule = $rule->validate($this->getValidData($param))) {
                 $this->setValidData($param, $rule->getSafeData());
             } else {

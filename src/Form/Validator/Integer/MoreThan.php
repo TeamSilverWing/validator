@@ -10,6 +10,7 @@ use \Form\Errors;
 class MoreThan extends Base
 {
     const ERROR_CODE = Errors::ERROR_CODE_VALIDATOR_INT_MORE;
+    const DEFAULT_ERROR = 1;
 
     /**
      * {@inheritdoc}

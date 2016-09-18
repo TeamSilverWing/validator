@@ -19,6 +19,14 @@ class ListValidator implements IList
     protected $form;
 
     /**
+     * @return static
+     */
+    public static function create()
+    {
+        return new static();
+    }
+
+    /**
      * @param mixed $rules
      * @return $this
      */
@@ -104,5 +112,13 @@ class ListValidator implements IList
     public function hasError(): bool
     {
         return $this->form->hasError();
+    }
+
+    /**
+     * @return array
+     */
+    public function getSafeData()
+    {
+        return $this->form->getSafeData();
     }
 }
