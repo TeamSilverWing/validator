@@ -23,5 +23,7 @@ class Errors
     const ERROR_CODE_VALIDATOR_IS_SCALAR = 10;
     const ERROR_CODE_VALIDATOR_IS_TYPE = 11;
 
+    const ERROR_CODE_VALIDATOR_LIST = 12;
+
     const FIELD_IS_REQUIRED = 1;
 }

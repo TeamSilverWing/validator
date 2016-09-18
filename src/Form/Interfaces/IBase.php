@@ -8,10 +8,9 @@ interface IBase extends IValidate
      * Добавление правила
      * @param int|string $param
      * @param mixed $rule
-     * @param string $message
      * @return IForm
      */
-    public function addRule($param, $rule, string $message = '');
+    public function addRule($param, $rule);
 
     /**
      * Добавление правил пачкой

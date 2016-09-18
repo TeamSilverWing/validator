@@ -218,18 +218,15 @@ abstract class Base implements IBase
      * Добавление правила валидации
      * @param int|string $param
      * @param mixed $rule
-     * @param string $message
      * @return $this
      */
-    public function addRule($param, $rule, string $message = '')
+    public function addRule($param, $rule)
     {
         if (!isset($this->requiredMap[$param])) {
             $this->requiredMap[$param] = $this->defaultRequired;
         }
 
         $this->rules[$param][] = $rule;
-        $ruleId = count($this->rules[$param]) - 1;
-        $this->errorMessages[$param][$ruleId] = $message;
         return $this;
     }
 
@@ -241,12 +238,8 @@ abstract class Base implements IBase
      */
     public function addRules($param, array $rules)
     {
-        foreach ($rules as $row) {
-            if (is_array($row)) {
-                $this->addRule($param, ...$row);
-            } else {
-                $this->addRule($param, $row);
-            }
+        foreach ($rules as $rule) {
+            $this->addRule($param, $rule);
         }
 
         return $this;
