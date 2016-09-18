@@ -114,7 +114,35 @@ return [
                 ]
             ],
             'complexParams' => [
-                3 => 'digit 4'
+                'complex.params' => [
+                    2 => [
+                        'price' => [
+                            'complex.price' => [
+                                'type' => [
+                                    Errors::ERROR_CODE_VALIDATOR_IN_ARRAY => [
+                                        1 => true
+                                    ]
+                                ],
+                                'title' => [
+                                    Errors::ERROR_CODE_VALIDATOR_STR_BETWEEN => [
+                                        1 => true
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ],
+                    3 => [
+                        'price' => [
+                            'complex.price' => [
+                                'title' => [
+                                    Errors::ERROR_CODE_VALIDATOR_STR_BETWEEN => [
+                                        1 => true
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
             ]
         ]
     ]

@@ -10,6 +10,8 @@ use \Form\Validator\String\Length\Between as StrBetween;
 
 class ComplexParams extends AllValid
 {
+    const ERROR_CODE = 'complex.params';
+
     public function __construct()
     {
         $this->addRules(
