@@ -269,7 +269,7 @@ abstract class Base implements IBase
      */
     protected function getValidData($param)
     {
-        return $this->validData[$param];
+        return array_key_exists($param, $this->validData) ? $this->validData[$param] : null;
     }
 
     /**

@@ -25,5 +25,7 @@ class Errors
 
     const ERROR_CODE_VALIDATOR_LIST = 12;
 
+    const ERROR_CODE_VALIDATOR_IN_ARRAY = 13;
+
     const FIELD_IS_REQUIRED = 1;
 }

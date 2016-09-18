@@ -12,7 +12,6 @@ use \Form\Filter\StripTags;
 use \Form\Validator\String\AllowedCountDigits;
 use \Form\Validator\String\Length\MoreThan as StrMoreThan;
 use \Form\Filter\PregReplace;
-use \Form\Filter\Arrays\Base as FilterArrayBase;
 
 /**
  * @property int $id
@@ -22,6 +21,7 @@ use \Form\Filter\Arrays\Base as FilterArrayBase;
  * @property int $category_id
  * @property string $phone
  * @property array $images
+ * @property array $price
  */
 class Item extends Form
 {
@@ -99,6 +99,15 @@ class Item extends Form
             [
                 IsArray::create(),
                 ImagesArray::create()
+            ]
+        );
+
+        $this->setRequired('complex', false);
+
+        $this->addRules(
+            'complex',
+            [
+                ComplexType::create()
             ]
         );
     }

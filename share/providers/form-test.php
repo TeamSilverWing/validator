@@ -82,6 +82,9 @@ return [
                     ]
                 ]
             ],
+            'complex' => [
+                'complex.type' => []
+            ],
             'complexParam' => [
                 3 => 'digit 4'
             ]
