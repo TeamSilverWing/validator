@@ -43,12 +43,24 @@ return [
                 [
                     'id' => 3,
                     'title' => 'set 3',
-                    'digits' => 9
+                    'digits' => 9,
+                    'price' => [
+                        'type' => 8,
+                        'title' => 'Cost',
+                        'value' => 5,
+                        'currency' => 3
+                    ],
                 ],
                 [
                     'id' => 4,
                     'title' => 'set 4',
-                    'digits' => 9
+                    'digits' => 9,
+                    'price' => [
+                        'type' => 1,
+                        'title' => 'Cost',
+                        'value' => 5,
+                        'currency' => 3
+                    ]
                 ]
             ]
         ],
@@ -101,7 +113,7 @@ return [
                     ]
                 ]
             ],
-            'complexParam' => [
+            'complexParams' => [
                 3 => 'digit 4'
             ]
         ]

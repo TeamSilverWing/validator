@@ -107,7 +107,18 @@ class Item extends Form
         $this->addRules(
             'complex',
             [
+                IsArray::create(),
                 ComplexType::create()
+            ]
+        );
+
+        $this->setRequired('complexParams', false);
+
+        $this->addRules(
+            'complexParams',
+            [
+                IsArray::create(),
+                ComplexParams::create()
             ]
         );
     }
