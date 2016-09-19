@@ -5,7 +5,9 @@ use Form\Errors;
 return [
     // set #0
     [
+        // class name
         \Tests\Form\Examples\Item::class,
+        // form data
         [
             'id' => 1,
             'title' => 'Item <b>black</b> title',
@@ -62,9 +64,36 @@ return [
                         'currency' => 3
                     ]
                 ]
+            ],
+            // @todo: for release 0.0.4
+            // @todo: хотя бы 1 валидный (SomeValid)
+            // @todo: allowEmpty + if (!empty) array.length validator
+            'someParam' => [
+                [
+                    'id' => 5,
+                    'type' => 5,
+                    'title' => 'Very big title',
+                    'required' => false,
+                    'images' => [34, 545, 5345, 2434]
+                ],
+                [
+                    'id' => 6,
+                    'type' => 1,
+                    'title' => 'Very small title',
+                    'required' => true,
+                ],
+                [
+                    'id' => 7,
+                    'type' => 3,
+                    'title' => 'Hello world title!',
+                    'required' => true,
+                    'images' => [445, 673, 463]
+                ]
             ]
         ],
+        // is valid?
         false,
+        // expected in safe data
         [
             'id' => 1,
             'title' => 'Item <b>black</b> title',
@@ -75,7 +104,9 @@ return [
             'params' => null,
             'images' => null,
             'complex' => null,
+            'complexParams' => null
         ],
+        // expected errors
         [
             'params' => [
                 'category.params.3' => [
