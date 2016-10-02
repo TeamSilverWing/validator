@@ -66,7 +66,6 @@ return [
                 ]
             ],
             // @todo: for release 0.0.4
-            // @todo: хотя бы 1 валидный (SomeValid)
             // @todo: allowEmpty + if (!empty) array.length validator
             'someParam' => [
                 [
@@ -84,7 +83,7 @@ return [
                 ],
                 [
                     'id' => 7,
-                    'type' => 3,
+                    'type' => 6,
                     'title' => 'Hello world title!',
                     'required' => true,
                     'images' => [445, 673, 463]
@@ -104,7 +103,22 @@ return [
             'params' => null,
             'images' => null,
             'complex' => null,
-            'complexParams' => null
+            'complexParams' => null,
+            'someParam' => [
+                [
+                    'id' => 5,
+                    'type' => 5,
+                    'title' => 'Very big title',
+                    'required' => false,
+                    'images' => [34, 545, 5345, 2434]
+                ],
+                [
+                    'id' => 6,
+                    'type' => 1,
+                    'title' => 'Very small title',
+                    'required' => true,
+                ],
+            ]
         ],
         // expected errors
         [

@@ -121,5 +121,12 @@ class Item extends Form
                 ComplexParams::create()
             ]
         );
+
+        $this->addRules(
+            'someParam',
+            [
+                SomeParam::create()
+            ]
+        );
     }
 }

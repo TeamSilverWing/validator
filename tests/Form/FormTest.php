@@ -30,7 +30,14 @@ class FormTest extends Base
 
         if (!empty($safeParams)) {
             foreach ($safeParams as $param => $expectedValue) {
-                $this->assertEquals($expectedValue, $form->{$param});
+                if ($expectedValue !== null) {
+                    $this->assertNotNull($form->{$param});
+                    $this->assertEquals($expectedValue, $form->{$param});
+                }
+
+                if ($expectedValue === null) {
+                    $this->assertNull($form->{$param});
+                }
             }
         }
 
