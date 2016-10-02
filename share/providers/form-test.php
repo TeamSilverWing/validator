@@ -66,7 +66,8 @@ return [
                 ]
             ],
             // @todo: for release 0.0.4
-            // @todo: allowEmpty + if (!empty) array.length validator
+            // @todo: allowEmpty(required?) + if (!empty) array.length validator
+            // @todo: callback validator for check elements with required
             'someParam' => [
                 [
                     'id' => 5,
